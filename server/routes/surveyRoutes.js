@@ -7,7 +7,7 @@ const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
-// Mongoose might complain when requiring a model file multiple times in test env; sidestep issue by using mongoose.model() rather than requiring model class directly 
+// mongoose might complain when requiring a model file multiple times in test env; sidestep issue by using mongoose.model() rather than requiring model class directly
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
@@ -67,7 +67,6 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
-    // Great place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
 
     try {
