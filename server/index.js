@@ -9,7 +9,9 @@ require('./models/User');
 // NOTE dont need const since this file only needs to be executed; not referenced anywhere in this file
 require('./services/passport');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -42,5 +44,5 @@ if (process.env.NODE_ENV === 'production') {
 // });
 
 // express can inject environment variables
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
